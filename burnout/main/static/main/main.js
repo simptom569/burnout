@@ -1,10 +1,5 @@
 const employeesData = [
-    { name: 'Иванов Иван Иванович', category: 'low-risk', chance: 10 },
-    { name: 'Шевцов Иван Кадимыч', category: 'medium-risk', chance: 30.12321 },
-    { name: 'Петров Андрей Василичч', category: 'medium-risk', chance: 20 },
-    { name: 'Ванцев Николай Соболев', category: 'high-risk', chance: 60 },
-    { name: 'Смирнова Анастасия Петровна', category: 'low-risk', chance: 5 },
-    { name: 'Козлова Мария Владимировна', category: 'high-risk', chance: 80 },
+    
 ];
 
 let originalRowsOrder;

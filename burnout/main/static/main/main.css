@@ -9,20 +9,20 @@ body {
     justify-content: center;
     height: 100vh;
     flex-direction: column;
+    min-height: 90vh;
 }
 
 h1 {
     text-align: center;
-    color: transparent; /* Сделаем текст прозрачным */
+    color: transparent;
     background: linear-gradient(to bottom right, 
                 rgb(26, 39, 63), #333);
-    -webkit-background-clip: text; /* Для браузеров, использующих движок WebKit (Chrome, Safari) */
+    -webkit-background-clip: text;
     background-clip: text;
     margin-bottom: 20px;
 }
 
 table {
-    width: 80%;
     border-collapse: collapse;
     margin: 20px auto;
     background-color: #fff;
@@ -147,11 +147,48 @@ button_sort {
 
 #employees {
     display: none;
-    text-align: center; /* Добавлено свойство для центрирования по горизонтали */
+    text-align: center;
+    padding-top: 10px;
+    height: 500px;
 }
 
-/* Добавлены стили для кнопок "Назад" и "Сортировать" */
 #backButton,
 #button_sort {
     margin-top: 10px;
+}
+
+
+#employeesList {
+    flex: 1;
+    overflow-y: auto;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+}
+
+tbody{
+    display: block;
+    overflow: auto;
+    max-height: 350px;
+    width: 100%;
+}
+
+table thead tr{
+    display: block;
+}
+
+table th, table td {
+    text-align: left;
+    width: 200px;
+}
+
+tr{
+    height: 45px;
+}
+
+::-webkit-scrollbar {
+    width: 0;
 }

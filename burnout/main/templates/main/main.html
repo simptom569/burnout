@@ -9,32 +9,30 @@
 </head>
 <body>
 
-<h1>Список сотрудников и шанс выгорания</h1>
+    <h1>Список сотрудников и шанс выгорания</h1>
 
-<!-- Добавлен блок для отображения категорий -->
-<div id="categories" class="btn-container">
-    <button_low onclick="showCategory('low-risk')">Низкий шанс</button_low>
-    <button_avg onclick="showCategory('medium-risk')">Средний шанс</button_avg>
-    <button_big onclick="showCategory('high-risk')">Высокий шанс</button_big>
-</div>
+    <div id="categories" class="btn-container">
+        <button_low onclick="showCategory('low-risk')">Низкий шанс</button_low>
+        <button_avg onclick="showCategory('medium-risk')">Средний шанс</button_avg>
+        <button_big onclick="showCategory('high-risk')">Высокий шанс</button_big>
+    </div>
+    
+    <div id="employees" style="display: none;">
+        <button_back id="backButton">Назад</button_back>
+        <table id="table_cat">
+            <thead>
+                <tr>
+                    <th>ФИО сотрудника</th>
+                    <th>Шанс выгорания</th>
+                </tr>
+            </thead>
+            <tbody id="employeesList">
+            </tbody>
+        </table>
+    </div>
 
-<!-- Добавлен блок для отображения списка сотрудников -->
-<div id="employees" style="display: none;">
-    <!-- <button_back onclick="goBack()">Назад</button_back> -->
-    <button_back id="backButton">Назад</button_back>
-    <table id="table_cat">
-        <thead>
-            <tr>
-                <th>ФИО сотрудника</th>
-                <th>Шанс выгорания</th>
-            </tr>
-        </thead>
-        <tbody id="employeesList">
-            <!-- Сюда будет добавлен список сотрудников по выбранной категории -->
-        </tbody>
-    </table>
-</div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 <script src="{% static 'main/main.js' %}"></script>
 
 </body>
