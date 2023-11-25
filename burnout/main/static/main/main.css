@@ -1,0 +1,157 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, 
+                #d5d7db, rgb(229, 231, 240));
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    color: transparent; /* Сделаем текст прозрачным */
+    background: linear-gradient(to bottom right, 
+                rgb(26, 39, 63), #333);
+    -webkit-background-clip: text; /* Для браузеров, использующих движок WebKit (Chrome, Safari) */
+    background-clip: text;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.btn-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button_low,
+button_avg,
+button_big,
+button_back,
+button_sort,
+[id^="button_"] {
+    transition: background-color 0.3s ease;
+}
+
+button_low:hover:not(:focus),
+button_avg:hover:not(:focus),
+button_big:hover:not(:focus),
+button_back:hover:not(:focus),
+button_sort:hover:not(:focus),
+[id^="button_"]:hover:not(:focus) {
+    background-color: rgba(19, 28, 29, 0.877);
+}
+
+button_low {
+    background-color: rgb(47, 179, 54);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+button_avg {
+    background-color: rgb(194, 153, 39);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+button_big {
+    background-color: #b82b2b;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+button_back {
+    background-color: rgb(47, 179, 54);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+button_sort {
+    background-color: rgb(47, 179, 54);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.alphabetical-btn {
+    background-color: #4285f4; 
+}
+
+.low-risk {
+    border-top: 2px solid rgb(47, 179, 54);
+}
+
+.medium-risk {
+    border-top: 2px solid rgb(194, 153, 39);
+}
+
+.high-risk {
+    border-top: 2px solid #b82b2b; 
+}
+
+.low-risk_button {
+    background-color: rgb(47, 179, 54);
+}
+
+.medium-risk_button {
+    background-color: rgb(194, 153, 39);
+}
+
+.high-risk_button {
+    background-color: #b82b2b; 
+}
+
+
+#employees {
+    display: none;
+    text-align: center; /* Добавлено свойство для центрирования по горизонтали */
+}
+
+/* Добавлены стили для кнопок "Назад" и "Сортировать" */
+#backButton,
+#button_sort {
+    margin-top: 10px;
+}
