@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Шанс выгорания сотрудников</title>
     <link rel="stylesheet" href="{% static 'main/main.css' %}">
 </head>
@@ -12,9 +12,9 @@
     <h1>Список сотрудников и шанс выгорания</h1>
 
     <div id="categories" class="btn-container">
-        <button_low onclick="showCategory('low-risk')">Низкий шанс</button_low>
-        <button_avg onclick="showCategory('medium-risk')">Средний шанс</button_avg>
-        <button_big onclick="showCategory('high-risk')">Высокий шанс</button_big>
+        <button_low onclick="showCategory('low-risk')" class="but">Низкий шанс</button_low>
+        <button_avg onclick="showCategory('medium-risk')" class="but">Средний шанс</button_avg>
+        <button_big onclick="showCategory('high-risk')" class="but">Высокий шанс</button_big>
     </div>
     
     <div id="employees" style="display: none;">

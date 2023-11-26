@@ -160,3 +160,15 @@ body::-webkit-scrollbar-track {
   cursor: pointer;
   margin: 0 5px;
 }
+
+@media screen and (max-width: 600px) {
+  .mini-graphs {
+      grid-template-columns: repeat(1, 1fr); /* Один график в строке */
+  }
+
+  .mini-graph {
+      width: 100%;
+      max-width: 90px; /* Максимальная ширина графика */
+      margin: 0; /* Убираем отступы */
+  }
+}

@@ -86,7 +86,7 @@ function createGraph(graphId, label, data, horizontalLineValue, dates) {
         label: label,
         data: data,
         borderColor: gradientBlueToRed,
-        backgroundColor: 'rgba(255, 165, 0, 0.06)', // Градиент с прозрачностью 80%
+        backgroundColor: 'rgba(255, 165, 0, 0.06)',
         borderWidth: 2,
         fill: 'start',
         tension: 0.4
@@ -105,10 +105,10 @@ function createGraph(graphId, label, data, horizontalLineValue, dates) {
       maintainAspectRatio: false,
       layout: {
         padding: {
-          left: 5, // Регулировка отступа слева
-          right: 20, // Регулировка отступа справа
-          top: 20, // Регулировка отступа сверху
-          bottom: 15 // Регулировка отступа снизу
+          left: 5,
+          right: 20,
+          top: 20,
+          bottom: 15
         }
       },
       scales: {
@@ -119,7 +119,7 @@ function createGraph(graphId, label, data, horizontalLineValue, dates) {
         },
         x: {
           grid: {
-            color: 'rgba(0, 0, 0, 0.02)' // Цвет вертикальных линий сетки с прозрачностью 20%
+            color: 'rgba(0, 0, 0, 0.02)'
           }
         }
       },
@@ -139,21 +139,17 @@ function createGraph(graphId, label, data, horizontalLineValue, dates) {
   });
 
   canvas.addEventListener('mouseover', function () {
-    // Подсветка canvas при наведении
     canvas.style.boxShadow = '0 0 10px rgba(255, 165, 0, 0.8)';
     canvas.style.transition = 'box-shadow 0.3s ease-in-out';
   });
 
   canvas.addEventListener('mouseout', function () {
-    // Убираем подсветку при уходе курсора
     canvas.style.boxShadow = 'none';
   });
 
-  // Помечаем каждую точку на графике
   var points = graphContainer.querySelectorAll('.chartjs-line .chartjs-point');
   points.forEach(function (point, index) {
     point.setAttribute('data-point', true);
-    // Добавляем атрибут для точек на горизонтальной линии
     if (data[index] === horizontalLineValue) {
       point.setAttribute('data-horizontal-line', true);
     }
