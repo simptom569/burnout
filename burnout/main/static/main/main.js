@@ -1,6 +1,26 @@
-const employeesData = [
-    
-];
+function getCategory(chance){
+    if (chance >= 0 && chance <= 40) {
+        return 'low-risk';
+    } else if (chance > 40 && chance <= 70) {
+        return 'medium-risk';
+    } else if (chance > 70 && chance <= 100) {
+        return 'high-risk';
+    }
+}
+
+const employeesData = []
+
+$.ajax({
+    url: "",
+    type: 'GET',
+    success: function(html){
+        employees = html.response;
+        for (const employee of employees){
+            const category = getCategory(parseFloat(employee.chance));
+            employeesData.push({ id: employee.id, name: employee.name, category, chance: parseFloat(employee.chance) });
+        }
+    }
+})
 
 let originalRowsOrder;
 
@@ -26,7 +46,7 @@ function showCategory(category) {
     employeesData.forEach(employee => {
         if (employee.category === category) {
             const row = document.createElement('tr');
-            row.innerHTML = `<td>${employee.name}</td><td>${employee.chance}%</td>`;
+            row.innerHTML = `<td><a href="user/${employee.id}">${employee.name}</a></td><td>${employee.chance}%</td>`;
             employeesListContainer.appendChild(row);
         }
     });

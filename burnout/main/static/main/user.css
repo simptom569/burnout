@@ -1,0 +1,156 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+  overflow-y: scroll;
+  background: linear-gradient(to bottom right, 
+  #d5d7db, rgb(229, 231, 240));
+
+  /* background: linear-gradient(to bottom right, 
+  #20202b,#292533); */
+}
+
+.profile {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.mini-graphs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(33.3333% - 20px), 1fr));
+  gap: 20px;
+  height: 100vh;
+  /* overflow-y: hidden; */
+}
+
+.mini-graph {
+  width: calc(33.3333% - 20px);
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Выравниваем по вертикали по центру */
+}
+
+.mini-graph h3 {
+  white-space: nowrap;
+  margin-bottom: 8px;
+}
+
+.mini-graph canvas {
+  width: 200%;
+  height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* overflow: hidden; */body {
+  font-family: 'Arial', sans-serif;
+  margin: 20px;
+  overflow-y: scroll;
+  background: linear-gradient(to bottom right, 
+  #d5d7db, rgb(229, 231, 240));
+}
+
+.profile {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.mini-graphs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(33.3333% - 20px), 1fr));
+  gap: 20px;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.mini-graph {
+  width: calc(33.3333% - 20px);
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Выравниваем по вертикали по центру */
+}
+
+.mini-graph h3 {
+  white-space: nowrap;
+  margin-bottom: 8px;
+}
+
+.mini-graph canvas {
+  width: 200%;
+  height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #ddd;
+  border-radius: 10px;
+}
+
+.mini-graph canvas[data-point] {
+  border-radius: 50%; /* Закруглим точки на графике */
+}
+
+.mini-graph canvas[data-horizontal-line] {
+  border-radius: 0; /* Отключаем закругление для точек горизонтальной линии */
+}
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #ddd;
+  border-radius: 10px;
+}
+
+.mini-graph canvas[data-point] {
+  border-radius: 50%; /* Закруглим точки на графике */
+}
+
+.mini-graph canvas[data-horizontal-line] {
+  border-radius: 0; /* Отключаем закругление для точек горизонтальной линии */
+}

@@ -39,21 +39,78 @@ def calculate_burnout(employee_data, recent_data) -> float:
     return weighted_burnout_percentage
 
 
-def get_burnout_employees() -> dict:
-    employee_data = load_data('employee_data.csv')
-    recent_data = load_data('new_employee_data.csv')
+def get_burnout_employees() -> list:
+    employee_data = load_data('main/data/employee_data.csv')
+    recent_data = load_data('main/data/new_employee_data.csv')
 
-    unique_employees = employee_data['Сотрудник'].unique()
+    unique_employees = employee_data['id сотрудника'].unique()
 
-    burnout_employees = {}
+    burnout_employees = []
 
     for employee in unique_employees:
-        employee_data_filtered = employee_data[employee_data['Сотрудник'] == employee]
-        recent_data_filtered = recent_data[recent_data['Сотрудник'] == employee].tail(7)
+        employee_data_filtered = employee_data[employee_data['id сотрудника'] == employee]
+        recent_data_filtered = recent_data[recent_data['id сотрудника'] == employee].tail(7)
 
         burnout_percentage = calculate_burnout(employee_data_filtered, recent_data_filtered)
 
-        print(f"Сотрудник: {employee}, Выгорание: {burnout_percentage:.2f}%")
-        burnout_employees[employee] = f'{burnout_employees:.2f}'
+        employee = int(employee)
+        employee_name = employee_data_filtered['Сотрудник'].iloc[0]
+
+        employee = {
+            'id': int(employee),
+            'name': employee_name,
+            'chance': f'{burnout_percentage:.2f}'
+        }
+
+        burnout_employees.append(employee)
     
     return burnout_employees
+
+def get_burnout_employee(employee_id: int) -> dict:
+    employee_data = load_data('main/data/employee_data.csv')
+    recent_data = load_data('main/data/new_employee_data.csv')
+
+    employee_data_filtered = employee_data[employee_data['id сотрудника'] == employee_id]
+    recent_data_filtered = recent_data[recent_data['id сотрудника'] == employee_id].tail(7)
+
+    burnout_percentage = calculate_burnout(employee_data_filtered, recent_data_filtered)
+
+    employee_name = employee_data_filtered['Сотрудник'].iloc[0]
+
+    result = {
+        'id': int(employee_id),
+        'name': employee_name,
+        'chance': f'{burnout_percentage:.2f}'
+    }
+
+    return result
+
+def get_average_parameters(employee_id: int) -> dict:
+    employee_data = load_data('main/data/employee_data.csv')
+    employee_data_filtered = employee_data[employee_data['id сотрудника'] == employee_id]
+
+    if employee_data_filtered.empty:
+        return {'error': 'Employee not found'}
+    
+    column_mapping = {
+        'Частота сообщения': 'frequencyData',
+        'Объем сообщения': 'volumeData',
+        'Настрой сообщения': 'settingData',
+        'Регулярность коммитов': 'commitFrequencyData',
+        'Интенсивность коммитов': 'commitIntensityData',
+        'Статус задачи': 'commitTask_statusData',
+        'Приоритетные изменения': 'commitPriority_changesData',
+        'Продолжительность активности': 'commitDuration_activityyData',
+        'Активность ночью': 'commitActivity_nightData'
+    }
+
+    parameters = list(column_mapping.keys())
+
+    average_values = {}
+
+    for parameter in parameters:
+        english_column_name = column_mapping[parameter]
+        average_value = employee_data_filtered[parameter].mean()
+        average_values[english_column_name] = round(average_value, 2)
+
+    return average_values
