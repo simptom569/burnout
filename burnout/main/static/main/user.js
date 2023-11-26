@@ -15,7 +15,9 @@ $.ajax({
     success: function(html){
         data_7_days = html.data_7_days;
         average_data = html.average_data;
-        console.log(average_data);
+
+        var dates = Object.keys(data_7_days);
+
         for (var date in data_7_days) {
             if (data_7_days.hasOwnProperty(date)) {
                 var entry = data_7_days[date];
@@ -41,20 +43,20 @@ $.ajax({
         AVG_commitDuration_activityyData = average_data.commitDuration_activityyData;
         AVG_commitActivity_nightData = average_data.commitActivity_nightData;
 
-        createGraph('frequencyGraph', 'Частота сообщения', frequencyData, AVG_frequencyData);
-        createGraph('volumeGraph', 'Объем сообщения', volumeData, AVG_volumeData);
-        createGraph('settingGraph', 'Настрой сообщения', settingData, AVG_settingData);
-        createGraph('commitFrequencyGraph', 'Регулярность коммитов', commitFrequencyData, AVG_commitFrequencyData);
-        createGraph('commitIntensityGraph', 'Интенсивность коммитов', commitIntensityData, AVG_commitIntensityData);
-        createGraph('taskStatusGraph', 'Статус задачи', commitTask_statusData, AVG_commitTask_statusData);
-        createGraph('priorityChangesGraph', 'Приоритетные изменения', commitPriority_changesData, AVG_commitPriority_changesData);
-        createGraph('activityDurationGraph', 'Продолжительность активности', commitDuration_activityyData, AVG_commitDuration_activityyData);
-        createGraph('nightActivityGraph', 'Активность ночью', commitActivity_nightData, AVG_commitActivity_nightData);
+        createGraph('frequencyGraph', 'Частота сообщения', frequencyData, AVG_frequencyData, dates);
+        createGraph('volumeGraph', 'Объем сообщения', volumeData, AVG_volumeData, dates);
+        createGraph('settingGraph', 'Настрой сообщения', settingData, AVG_settingData, dates);
+        createGraph('commitFrequencyGraph', 'Регулярность коммитов', commitFrequencyData, AVG_commitFrequencyData, dates);
+        createGraph('commitIntensityGraph', 'Интенсивность коммитов', commitIntensityData, AVG_commitIntensityData, dates);
+        createGraph('taskStatusGraph', 'Статус задачи', commitTask_statusData, AVG_commitTask_statusData, dates);
+        createGraph('priorityChangesGraph', 'Приоритетные изменения', commitPriority_changesData, AVG_commitPriority_changesData, dates);
+        createGraph('activityDurationGraph', 'Продолжительность активности', commitDuration_activityyData, AVG_commitDuration_activityyData, dates);
+        createGraph('nightActivityGraph', 'Активность ночью', commitActivity_nightData, AVG_commitActivity_nightData, dates);
   }
 })
 
 
-function createGraph(graphId, label, data, horizontalLineValue) {
+function createGraph(graphId, label, data, horizontalLineValue, dates) {
   var graphContainer = document.getElementById(graphId);
   var canvas = graphContainer.querySelector('canvas');
   var ctx = canvas.getContext('2d');
@@ -65,7 +67,7 @@ function createGraph(graphId, label, data, horizontalLineValue) {
   var yAxisMin = Math.min(minDataValue, horizontalLineValue)-5;
   var yAxisMax = Math.max(maxDataValue, horizontalLineValue)+5;
 
-  canvas.width = canvas.clientWidth * 1.5;
+  canvas.width = canvas.clientWidth * 1.7;
   canvas.height = 200;
 
   var gradientBlueToRed = ctx.createLinearGradient(0, 0, 0, canvas.height);
@@ -79,7 +81,7 @@ function createGraph(graphId, label, data, horizontalLineValue) {
   var graph = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7'],
+      labels: dates,
       datasets: [{
         label: label,
         data: data,
